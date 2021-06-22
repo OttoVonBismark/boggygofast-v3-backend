@@ -1,0 +1,66 @@
+version: '3.5'
+services:
+  app: &app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tmpfs:
+      - /app/tmp
+      - /app/log
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+      - type: volume
+        source: vendor_bundle
+        target: /app/vendor/bundle
+        volume:
+          nocopy: true
+
+  postgres: &postgres
+    image: postgres:13-alpine
+    environment:
+      - POSTGRES_DB=bgf
+      - POSTGRES_USER=bgf_worker
+      - POSTGRES_PASSWORD=derpass
+    networks:
+      - bgf-backend
+
+############################
+#         TESTING          #
+############################
+  test: &test
+    <<: *app
+    command: ["./bin/all_checks"]
+    networks:
+      - bgf-exposed
+      - bgf-backend
+    environment:
+      RAILS_ENV: test
+      DATABASE_URL: "postgresql://bgf_worker:derpass@postgres-test/bgf"
+    depends_on:
+      - postgres-test
+
+  rubocop: &rubocop
+    <<: *test
+    command: ["bundle", "exec", "rubocop"]
+
+  rspec: &rspec
+    <<: *test
+    command: ["bundle", "exec", "rspec", "spec"]
+
+  postgres-test:
+    <<: *postgres
+    tmpfs: /var/lib/postgresql/data
+
+networks:
+  bgf-exposed:
+    driver: bridge
+    name: bgf-exposed
+  bgf-backend:
+    driver: bridge
+    name: bgf-backend
+    internal: true
+
+volumes:
+  vendor_bundle:
