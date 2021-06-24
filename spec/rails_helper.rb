@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+require 'jsonapi/rspec'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
@@ -9,6 +10,7 @@ require File.expand_path('../config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'support/factory_bot'
+require 'support/api_helpers'
 # require 'support/authorization' # Spoilers, sweetie.
 
 begin
@@ -22,6 +24,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+  config.include JSONAPI::RSpec
+  config.include ApiHelpers
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
