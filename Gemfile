@@ -9,6 +9,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 gem 'devise-jwt'
 gem 'jbuilder'
+gem 'jsonapi-rails'
 gem 'pg'
 gem 'puma', '~> 5.0'
 gem 'rack-cors'
