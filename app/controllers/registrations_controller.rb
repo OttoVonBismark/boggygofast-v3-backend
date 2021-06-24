@@ -2,7 +2,6 @@
 
 # Registrations Controller
 class RegistrationsController < Devise::RegistrationsController
-  # Gonna be real. I dunno what the hell this is. Probably gonna refactor it.
   def create
     user = User.create(user_params)
     if user.persisted?
