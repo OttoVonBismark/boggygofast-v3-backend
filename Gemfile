@@ -6,16 +6,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.1'
 
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'devise'
+gem 'devise-jwt'
 gem 'jbuilder'
 gem 'pg'
 gem 'puma', '~> 5.0'
+gem 'rack-cors'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
 
 group :development, :test do
   gem 'brakeman'
