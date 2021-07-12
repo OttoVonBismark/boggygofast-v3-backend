@@ -11,7 +11,7 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 require 'support/factory_bot'
 require 'support/api_helpers'
-# require 'support/authorization' # Spoilers, sweetie.
+require 'support/authorization'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -31,5 +31,5 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  # config.include Authorization::Test::Helpers
+  config.include Authorization::Test::Helpers
 end
