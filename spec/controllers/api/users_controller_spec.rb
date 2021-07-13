@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: These pass locally, but fail in CI. (All requests get 401'd) Investigation will be necessary later.
 require 'rails_helper'
 
 describe Api::UsersController, type: :request do
