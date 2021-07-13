@@ -38,6 +38,8 @@ services:
     environment:
       RAILS_ENV: test
       DATABASE_URL: "postgresql://bgf_worker:derpass@postgres-test/bgf"
+      # This key is used here and here alone for testing purposes only. DO NOT *EVER* USE IN PRODUCTION AS IT IS COMPROMISED BY DESIGN!
+      DEVISE_JWT_SECRET_KEY: "686e565fec791385030ecc2fc783c0c904ec634b54a78d8cd717e815443460de6fa7165a8d5b6d00de86e62a8b5d02158f44e8378fa6f9caea619ae3dbb08aff"
     depends_on:
       - postgres-test
 
