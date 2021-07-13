@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
+# SessionsController
 class SessionsController < Devise::SessionsController
-
   private
 
   def respond_with(resource, _opts = {})

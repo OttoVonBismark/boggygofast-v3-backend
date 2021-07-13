@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 describe SessionsController, type: :request do
-
   let(:user) { create(:user) }
   let(:login_url) { '/api/login' }
   let(:logout_url) { '/api/logout' }
