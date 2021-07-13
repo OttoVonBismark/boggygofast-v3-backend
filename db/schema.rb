@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_07_12_175925) do
 
   create_table "jwt_denylist", force: :cascade do |t|
     t.string "jti", null: false
-    t.datetime "expired_at", null: false
+    t.datetime "exp", null: false
     t.index ["jti"], name: "index_jwt_denylist_on_jti"
   end
 
@@ -35,11 +35,6 @@ ActiveRecord::Schema.define(version: 2021_07_12_175925) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string "current_sign_in_ip"
-    t.string "last_sign_in_ip"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"

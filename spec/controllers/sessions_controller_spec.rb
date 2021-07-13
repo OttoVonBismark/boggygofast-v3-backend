@@ -42,5 +42,13 @@ describe SessionsController, type: :request do
 
       expect(response).to have_http_status(204)
     end
+
+    it 'expires the JWT, returning 401 on subsequent access attempts' do
+      login_with_api(user)
+
+      delete logout_url
+      get "/api/users/#{user.id}"
+      expect(response).to have_http_status(401)
+    end
   end
 end
