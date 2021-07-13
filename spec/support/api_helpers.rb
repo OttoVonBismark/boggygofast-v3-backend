@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Shortcuts to make API-related tests more DRY
 module ApiHelpers
   def json
     JSON.parse(response.body)
