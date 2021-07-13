@@ -3,8 +3,9 @@
 # Registrations Controller
 class RegistrationsController < Devise::RegistrationsController
   def create
-    user = User.create(user_params)
-    if user.persisted?
+    response = Users::CreateUser.call(user_info: user_params)
+
+    if response.success?
       render template: 'users/create_success', status: :created
     else
       render template: 'shared/silent_reply', status: :bad_request

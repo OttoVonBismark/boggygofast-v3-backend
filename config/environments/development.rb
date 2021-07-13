@@ -39,6 +39,9 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # Allow generating absolute URLs with routing URL helpers.
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
