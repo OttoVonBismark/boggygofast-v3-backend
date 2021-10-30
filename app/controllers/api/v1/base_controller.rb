@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # API Base Controller. Essentially ApplicationController, but exclusively for API stuff.
-class Api::BaseController < ApplicationController
+class Api::V1::BaseController < ApplicationController
   # I'm going to leave this here for now, but if it causes issues, get rid of it and let each controller
   # determine their own authentication needs.
   before_action :authenticate_user!
