@@ -2,6 +2,9 @@
 
 require 'rails_helper'
 
+# Environment Variable fakes
+BGF_FRONTEND_URL = 'http://localhost:3000'
+
 describe Api::UsersController, type: :request do
   let(:user) { create(:user) }
 

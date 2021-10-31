@@ -4,4 +4,4 @@
 
 <p>Click the link below to unlock your account:</p>
 
-<p><%= link_to 'Unlock my account', "#{ENV.fetch('BGF_FRONTEND_URL')}unlock_account/#{@token}" %></p>
+<p><%= link_to 'Unlock my account', "#{ Rails.configuration.frontend_url }/unlock_account/#{@token}" %></p>

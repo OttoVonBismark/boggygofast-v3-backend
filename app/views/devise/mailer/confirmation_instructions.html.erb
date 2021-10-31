@@ -2,4 +2,4 @@
 
 <p>You can confirm your account email through the link below:</p>
 
-<p><%= link_to 'Confirm my account', "#{ENV.fetch('BGF_FRONTEND_URL')}confirmations/#{@token}" %></p>
+<p><%= link_to 'Confirm my account', "#{ Rails.configuration.frontend_url }/confirmation/#{@token}" %></p>

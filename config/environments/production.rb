@@ -115,4 +115,7 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  # Connecting to the Frontend: Be sure to use an environment variable here so this stays portable!
+  config.frontend_url = ENV.fetch('BGF_FRONTEND_URL')
 end
